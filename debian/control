@@ -1,0 +1,17 @@
+Source: rubinius
+Maintainer: Matt Whiteley <mwhiteley@engineyard.com>
+Section: universe/ruby
+Priority: optional
+Build-Depends: debhelper (>= 8), autotools-dev, bison, libgdbm-dev, libncurses-dev, libqdbm-dev, libreadline-dev, libssl-dev, libyaml-dev, libz-dev, llvm-3.0-dev, rake, ruby-dev
+Standards-Version: 3.9.3
+Homepage: http://rubini.us/
+
+Package: rubinius
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: An implementation of the Ruby programming language
+ Rubinius includes a bytecode virtual machine, parser, bytecode compiler,
+ garbage collector, and just-in-time (JIT) native machine code compiler. The
+ Ruby core library is written almost entirely in Ruby. Rubinius provides the
+ same standard libraries as Matz's Ruby implementation (MRI). Rubinius also
+ provides C-API compatibility for native C extensions.

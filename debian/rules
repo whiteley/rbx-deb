@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+
+export RBX_PREFIX_PATH=$(CURDIR)/staging/usr
+RBX_VERSION_SUFFIX := 2.0.0rc1
+
+override_dh_auto_configure:
+	./configure \
+	  --prefix=/usr/lib/rubinius/$(RBX_VERSION_SUFFIX) \
+	  --preserve-prefix \
+	  --mandir=/usr/share/man \
+	  --enable-version='1.8,1.9' \
+	  --default-version='1.9' \
+	  --llvm-config=/usr/bin/llvm-config-3.0
+
+override_dh_auto_build:
+	rake build
+	  mkdir -p ${RBX_PREFIX_PATH}/bin
+	  ln -s /usr/lib/rubinius/$(RBX_VERSION_SUFFIX)/bin/rbx ${RBX_PREFIX_PATH}/bin/rbxrbx$(RBX_VERSION_SUFFIX)
+	  for cmd in gem irb rake rdoc ri; \
+	    do cp -av debian/rbx-wrapper ${RBX_PREFIX_PATH}/bin/rbx$${cmd}$(RBX_VERSION_SUFFIX); \
+	  done
+
+%:
+	dh $@

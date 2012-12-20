@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+RBX_VERSION_SUFFIX=2.0.0rc1
+
+if [ "$1" = "configure" ]
+then
+        update-alternatives --install /usr/bin/rbx rbx \
+            /usr/bin/rbxrbx${RBX_VERSION_SUFFIX} 91
+        update-alternatives --install /usr/bin/ruby ruby \
+            /usr/bin/rbxrbx${RBX_VERSION_SUFFIX} 91 \
+        --slave /usr/bin/gem gem /usr/bin/rbxgem${RBX_VERSION_SUFFIX} \
+        --slave /usr/bin/irb irb /usr/bin/rbxirb${RBX_VERSION_SUFFIX}  \
+        --slave /usr/bin/rake rake /usr/bin/rbxrake${RBX_VERSION_SUFFIX}  \
+        --slave /usr/bin/rdoc rdoc /usr/bin/rbxrdoc${RBX_VERSION_SUFFIX}  \
+        --slave /usr/bin/ri ri /usr/bin/rbxri${RBX_VERSION_SUFFIX} 
+fi
+#DEBHELPER#

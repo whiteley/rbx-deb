@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+RBX_VERSION_SUFFIX=2.0.0rc1
+
+if [ "$1" = "remove" ]; then
+        update-alternatives --remove rbx /usr/bin/rbxrbx${RBX_VERSION_SUFFIX}
+        update-alternatives --remove ruby /usr/bin/rbxrbx${RBX_VERSION_SUFFIX}
+fi
+
+#DEBHELPER#
