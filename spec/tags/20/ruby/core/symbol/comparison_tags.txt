@@ -1,0 +1,2 @@
+fails:Symbol#<=> returns nil if its argument does not provide #to_sym
+fails:Symbol#<=> returns nil if its argument does not provide #<=>
